@@ -14,11 +14,11 @@ CREATE table reviewer (
 
 CREATE table review (
     id serial PRIMARY KEY,
-    CONSTRAINT reviewername FOREIGN KEY (reviewer_id) REFERENCES reviewer(reviewer_id), 
+    reviewerid INTEGER REFERENCES reviewer(id), 
     stars numeric CHECK(stars <= 5 and  stars >= 0),
     title text,
     review text,
-    CONSTRAINT restaurantname FOREIGN KEY (restaurant_id) REFERENCES restaurant(restaurant_id)
+   restaurantid  INTEGER REFERENCES restaurant(id)
 );
 
 INSERT INTO restaurant (name,address,category)
@@ -30,8 +30,8 @@ INSERT INTO reviewer (name,email,karma)
 VALUES ('Brooklyn West', 'bdcolosi27@gmail.com', 3 ), ('Spongebob', 'sbob@gmail.com', 5), ('Yusuke Urameshi', 'spiritgun1@yahoo.com', 7), 
 ('Davidson Weston', 'davidsonw91@gmail.com', 6), ('Shadow Colosi-Weston', 'shadowwoah@gamil.com', 1), ('Onyx Colosi-Weston', 'bigbub@yahoo.com', 2);
 
-INSERT INTO review (reviewername,stars,title,review,restaurantname)
-VALUES ('Onyx', 3, 'Great bookstore, Bad Food', 'a sancturary for beta male sadbois from berklee. food is bad sorry bois!', 'Trident Booksellers & Cafe'), 
-('Brooklyn', 5, 'Great Authentic Mexican', 'Great food, but sometimes the service is slow', 'Chilacates'), 
-('Yusuke', 2, 'New Menus is Lackluster', 'One of my favorite bars to go play pool. They recently changed their menu and it is NOT good.', 'Trackside Tavern '), 
-('Spongebob', 4, 'Great Japanese!', 'I loved the ramen here!!!!!!', 'Wagaya');
+INSERT INTO review (reviewerid,stars,title,review,restaurantid)
+VALUES (1, 3, 'Great bookstore, Bad Food', 'a sancturary for beta male sadbois from berklee. food is bad sorry bois!', 1), 
+(2,5, 'Great Authentic Mexican', 'Great food, but sometimes the service is slow', 2), 
+(3,2, 'New Menus is Lackluster', 'One of my favorite bars to go play pool. They recently changed their menu and it is NOT good.', 3), 
+( 6,4, 'Great Japanese!', 'I loved the ramen here!!!!!!',4);
